@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+import React, { useState } from 'react';
+import EmailForm from './EmailForm';
+import EmailList from './EmailList';
 
-function App() {
+const App = () => {
+  const [emails, setEmails] = useState([]);
+
+  const addEmail = (newEmail) => {
+    setEmails([...emails, newEmail]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Bulk Email Tool</h1>
+      <EmailForm addEmail={addEmail} />
+      <EmailList emails={emails} />
     </div>
   );
-}
+};
 
 export default App;
